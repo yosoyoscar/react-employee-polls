@@ -21,5 +21,7 @@ export function formatQuestion (question, author, authedUser) {
     hasAnswered: optionOne.votes.includes(authedUser) || optionTwo.votes.includes(authedUser),
     hasVotedForOne: optionOne.votes.includes(authedUser),
     hasVotedForTwo: optionTwo.votes.includes(authedUser),
+    optionOnePercentage: Math.round(optionOne.votes.length / (optionOne.votes.length + optionTwo.votes.length) * 100),
+    optionTwoPercentage: Math.round(optionTwo.votes.length / (optionOne.votes.length + optionTwo.votes.length) * 100),
   }
 }

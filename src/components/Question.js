@@ -1,9 +1,5 @@
 import { connect } from "react-redux";
 import { formatQuestion, formatDate } from "../utils/helpers";
-import {
-  TiThumbsUp,
-  TiThumbsDown,
-} from "react-icons/ti";
 import { handleAnswerQuestion } from "../actions/questions";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
@@ -58,6 +54,8 @@ const Question = (props) => {
     hasAnswered,
     hasVotedForOne,
     hasVotedForTwo,
+    optionOnePercentage,
+    optionTwoPercentage,
   } = props.question;
 
   return (
@@ -65,20 +63,28 @@ const Question = (props) => {
       <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
       <div className="tweet-info">
         <div>
-          <span>{name}</span>
+          <span>Poll by {name}</span>
           <div>{formatDate(timestamp)}</div>
           <p>Would You Rather</p>
-          <div><span>Option One: </span>
-          { hasAnswered && hasVotedForOne && <TiThumbsUp className="question-icon green"/> }
-          { hasAnswered && !hasVotedForOne && <TiThumbsDown className="question-icon red"/> }
-          {optionOne.text}
-          { !hasAnswered && (<p><button className="btn" onClick={handleVoteOne}>Vote Option One</button></p>) }
+          <div className="question-option">
+            <p>
+              Option One: <strong>{optionOne.text}</strong>
+            </p>
+            <p>
+              Option One has received {optionOne.votes.length} votes so far, {optionOnePercentage}% of voters.
+              { hasAnswered && hasVotedForOne && <span className="red">You voted for this option</span> }  
+            </p>
+            { !hasAnswered && (<p><button className="btn-vote" onClick={handleVoteOne}>Vote</button></p>) }
           </div>
-          <div><span>Option Two: </span>
-          { hasAnswered && hasVotedForTwo && <TiThumbsUp className="question-icon green"/> }
-          { hasAnswered && !hasVotedForTwo && <TiThumbsDown className="question-icon red"/> }
-          {optionTwo.text}
-          { !hasAnswered && (<p><button className="btn" onClick={handleVoteTwo}>Vote Option Two</button></p>) }
+          <div className="question-option">
+            <p>
+              Option Two: <strong>{optionTwo.text}</strong>
+            </p>
+            <p>
+              Option Two has received {optionTwo.votes.length} votes so far, {optionTwoPercentage}% of voters.
+              { hasAnswered && hasVotedForTwo && <span className="red"> You voted for this option</span> }  
+            </p>
+            { !hasAnswered && (<p><button className="btn-vote" onClick={handleVoteTwo}>Vote</button></p>) }
           </div>
         </div>
       </div>

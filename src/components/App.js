@@ -16,6 +16,11 @@ const App = (props) => {
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
+
+  if(!props.authedUser) {
+    return <Login />
+  }
+
   return (
     <Fragment>
       <LoadingBar />
@@ -42,7 +47,7 @@ const App = (props) => {
 
 const mapStateToProps = ({ users, authedUser }) => ({
   authedUser,
-  loading: authedUser === null && !users,
+  loading: authedUser === null,
 });
 
 export default connect(mapStateToProps)(App);

@@ -32,14 +32,16 @@ const QuestionNew = (props) => {
           className="textarea"
           value={optionOne}
           onChange={handleChangeOptionOne}
+          data-testid="option-one"
         />
         <input type="text"
           placeholder="Option Two"
           className="textarea"
           value={optionTwo}
           onChange={handleChangeOptionTwo}
+          data-testid="option-two"
         />
-        <button className="btn" type="submit" disabled={optionOne === "" || optionTwo === ""}>
+        <button className="btn" type="submit" disabled={optionOne === "" || optionTwo === ""} data-testid="submit-button">
           Submit
         </button>
       </form>

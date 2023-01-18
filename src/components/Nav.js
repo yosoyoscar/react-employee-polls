@@ -30,11 +30,13 @@ const Nav = (props) => {
           <li>
             <Link to="/leaderboard">Leaderboard</Link>
           </li>
-          <li className="nav-user">
-            <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar" />
-            <p>{ name }</p>
-            <button onClick={handleLogout}>Logout</button>
-          </li>
+          {
+            navUser && <li className="nav-user">
+              <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar" />
+              <p>{ name }</p>
+              <button onClick={handleLogout}>Logout</button>
+            </li>
+          }
         </ul>
         )
       }
