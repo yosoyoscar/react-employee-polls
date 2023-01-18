@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# Employee Polls Web App
+
+Small app where employees of a company can create and vote on Polls to improve collaboration and transparency
+Udacity OLX React Nanodegree
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
